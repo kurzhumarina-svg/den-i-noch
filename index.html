@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>День и Ночь</title>
+  <!-- Скрипт Telegram: даёт доступ к кнопкам, теме и отправке данных боту -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand"><span class="mark"></span>День и&nbsp;Ночь</div>
+    <p class="sub">Квартиры посуточно · Южно-Сахалинск</p>
+  </header>
+
+  <!-- Экран 1: список квартир -->
+  <section id="list-view">
+    <div class="filters">
+      <span class="filters-label">Сколько вас:</span>
+      <div id="chips"></div>
+    </div>
+    <div id="cards"></div>
+    <p class="empty" id="empty" hidden>Для такой компании свободных квартир нет — напишите в бот, подберём.</p>
+  </section>
+
+  <!-- Экран 2: квартира и календарь -->
+  <section id="detail-view" hidden>
+    <img id="d-photo" class="d-photo" alt="">
+    <div class="d-body">
+      <h1 id="d-title"></h1>
+      <p class="meta" id="d-meta"></p>
+      <p id="d-about"></p>
+      <p class="rules">Заселение с 14:00, выезд до 12:00</p>
+
+      <h2>Даты</h2>
+      <div class="cal-head">
+        <button id="prev" class="nav" aria-label="Предыдущий месяц">←</button>
+        <span id="month"></span>
+        <button id="next" class="nav" aria-label="Следующий месяц">→</button>
+      </div>
+      <div class="weekdays"><span>пн</span><span>вт</span><span>ср</span><span>чт</span><span>пт</span><span>сб</span><span>вс</span></div>
+      <div class="grid" id="grid"></div>
+      <p class="hint" id="hint"></p>
+      <!-- Вне Telegram (проверка в браузере) нет главной кнопки — показываем свою -->
+      <button id="fallback-btn" class="book" hidden></button>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>

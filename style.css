@@ -1,0 +1,109 @@
+/* «День» — светлая тема: тёплая бумага и янтарь заката */
+:root {
+  --bg: #f6f1e7;
+  --surface: #fffdf8;
+  --text: #2a2420;
+  --muted: #7a6e63;
+  --line: #e6dccb;
+  --accent: #d9702a;
+  --accent-ink: #ffffff;
+  --range: #f7dfc9;
+  --busy: #b9ad9e;
+}
+
+/* «Ночь» — тёмная тема Telegram: глубокий синий и тёплый свет окон */
+:root[data-theme="dark"] {
+  --bg: #111725;
+  --surface: #1a2234;
+  --text: #ece6da;
+  --muted: #8e97ab;
+  --line: #2a3449;
+  --accent: #f2b544;
+  --accent-ink: #1b1405;
+  --range: #3a3424;
+  --busy: #4d5870;
+}
+
+* { box-sizing: border-box; margin: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.45 Manrope, system-ui, sans-serif;
+  padding: 0 16px 32px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button { font: inherit; color: inherit; cursor: pointer; }
+
+/* --- Шапка --- */
+.top { padding: 20px 0 14px; }
+.brand { font-weight: 800; font-size: 22px; letter-spacing: -0.02em; display: flex; align-items: center; gap: 10px; }
+/* Знак: круг наполовину день, наполовину ночь */
+.mark {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: linear-gradient(90deg, var(--accent) 50%, var(--text) 50%);
+}
+.sub { color: var(--muted); font-size: 13px; margin-top: 2px; }
+
+/* --- Фильтр --- */
+.filters { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+.filters-label { color: var(--muted); font-size: 13px; }
+#chips { display: flex; gap: 6px; }
+.chip {
+  min-width: 36px; height: 32px; padding: 0 10px;
+  border: 1px solid var(--line); border-radius: 16px; background: var(--surface);
+}
+.chip.on { background: var(--text); color: var(--bg); border-color: var(--text); }
+
+/* --- Список --- */
+.card {
+  display: flex; gap: 14px; width: 100%; text-align: left;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+  padding: 10px; margin-bottom: 10px;
+}
+.card img { width: 92px; height: 118px; object-fit: cover; border-radius: 9px; flex-shrink: 0; }
+.card-text { display: flex; flex-direction: column; padding: 2px 0; min-width: 0; }
+.card-title { font-weight: 600; font-size: 16px; line-height: 1.25; }
+.card-meta { color: var(--muted); font-size: 13px; margin-top: 4px; }
+.card-price { margin-top: auto; font-size: 13px; color: var(--muted); }
+.card-price b { color: var(--text); font-size: 17px; font-weight: 800; }
+.empty { color: var(--muted); padding: 20px 0; }
+
+/* --- Квартира --- */
+.d-photo {
+  display: block; width: 100%; height: 300px; object-fit: cover;
+  border-radius: 14px; background: var(--line);
+}
+.d-body { padding-top: 16px; }
+h1 { font-size: 22px; line-height: 1.2; letter-spacing: -0.01em; }
+.meta { color: var(--muted); font-size: 13px; margin: 4px 0 12px; }
+.rules { color: var(--muted); font-size: 13px; margin-top: 10px; }
+h2 { font-size: 17px; margin: 22px 0 10px; }
+
+/* --- Календарь --- */
+.cal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+#month { font-weight: 600; }
+.nav { width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 50%; background: var(--surface); }
+.nav:disabled { opacity: 0.3; cursor: default; }
+.weekdays, .grid { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; }
+.weekdays { color: var(--muted); font-size: 12px; margin-bottom: 4px; }
+.grid { row-gap: 4px; }
+.day {
+  height: 40px; border: 0; background: none; font-variant-numeric: tabular-nums;
+}
+.day.past { color: var(--busy); cursor: default; }
+.day.busy { color: var(--busy); text-decoration: line-through; }
+.day.range { background: var(--range); }
+.day.from, .day.to { background: var(--accent); color: var(--accent-ink); font-weight: 800; }
+.day.from { border-radius: 10px 0 0 10px; }
+.day.to { border-radius: 0 10px 10px 0; }
+.day.from:not(.has-to) { border-radius: 10px; }
+
+.hint { color: var(--muted); font-size: 14px; margin-top: 12px; min-height: 21px; }
+.hint b { color: var(--text); }
+
+.book {
+  width: 100%; height: 50px; margin-top: 14px; border: 0; border-radius: 12px;
+  background: var(--accent); color: var(--accent-ink); font-weight: 800;
+}
